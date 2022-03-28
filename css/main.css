@@ -1,0 +1,254 @@
+* {
+  margin: 0px;
+  box-sizing: border-box;
+}
+.container {
+  padding: 10px;
+  display: grid;
+  /* grid-template-columns: repeat(auto-fill, minmax(360px,auto)); */
+  grid-template-columns: repeat(1, minmax(360px, auto));
+  gap: 50px;
+  /* justify-content: center; */
+}
+.centerItemsInside {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+.gameBox {
+  width: 310px;
+  height: 120px;
+  border: 2px solid black;
+  position: relative;
+  /* position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); */
+  display: flex;
+  flex-direction: column;
+  border-radius: 30px;
+  background-color: #979187;
+  /* margin: 0px auto; */
+  /* transition: 3s; */
+}
+.gameBox h2 {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+button {
+  width: 100px;
+  height: calc(350px - 300px - 20px);
+  align-self: center;
+  transform: translatey(10px);
+  border-radius: 10px;
+  position: absolute;
+  top: 50px;
+  background-color: #a38b69;
+}
+button:hover {
+  cursor: pointer;
+}
+
+.game {
+  display: none;
+  position: absolute;
+  bottom: 1px;
+  left: 50%;
+  transform: translatex(-50%);
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(3, auto);
+  border: 2px solid black;
+  width: 300px;
+  height: 20px;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 20px;
+  background-color: #8d6833;
+  /* transition: 3s; */
+}
+
+.game > div {
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 90px;
+  height: 90px;
+  font-size: 2.5em;
+  background-color: #be8e4b;
+  /* transition: 3s; */
+}
+
+#empty {
+  border: none;
+  background-color: inherit;
+}
+
+#numbergameitems > :not([id="empty"]) {
+  cursor: pointer;
+}
+
+.finished {
+  display: none;
+  background-color: gold;
+  position: absolute;
+  bottom: 3px;
+  left: 50%;
+  transform: translatex(-50%);
+  width: 300px;
+  height: 300px;
+  opacity: 0.5;
+  border-radius: 20px;
+}
+.Congratulations {
+  display: none;
+  font-size: 2.5em;
+  position: absolute;
+  top: 162px;
+  left: 69px;
+}
+
+@media (max-width: 520px) {
+  .gameBox {
+    width: 280px;
+  }
+  .gameBox > h2 {
+    top: 0;
+    transform: translateX(-27%);
+  }
+  .game {
+    width: 270px;
+  }
+  .game > div {
+    width: 80px;
+  }
+  .finished {
+    width: 270px;
+  }
+  .Congratulations {
+    left: 54px;
+  }
+}
+.directions {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: none;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-areas: ". north ." "west . east" ". south .";
+  gap: 10px;
+}
+.north {
+  grid-area: north;
+  width: 0px;
+  height: 0px;
+  border: 20px;
+  border-style: solid;
+  border-color: transparent transparent pink transparent;
+}
+.east {
+  grid-area: east;
+  width: 0px;
+  height: 0px;
+  border: 20px;
+  border-style: solid;
+  border-color: transparent transparent transparent pink;
+}
+.south {
+  grid-area: south;
+  width: 0px;
+  height: 0px;
+  border: 20px;
+  border-style: solid;
+  border-color: pink transparent transparent transparent;
+}
+.west {
+  grid-area: west;
+  width: 0px;
+  height: 0px;
+  border: 20px;
+  border-style: solid;
+  border-color: transparent pink transparent transparent;
+}
+
+.north:hover,
+.east:hover,
+.south:hover,
+.west:hover {
+  cursor: pointer;
+}
+#returnstep2048 {
+  width: 40px;
+  height: 40px;
+  top: 6%;
+  right: 11%;
+  /* background-image: url("https://cdn3.iconfinder.com/data/icons/ui-essential-elements-buttons/110/Undo-512.png"); */
+}
+#returnstep2048::after {
+  content: "<";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+#game2048 {
+  width: 360px;
+}
+
+#game2048items {
+  display: none;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 3px;
+  position: absolute;
+  bottom: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 350px;
+  gap: 0px;
+}
+#game2048items > div {
+  width: 80px;
+  height: 80px;
+  background-color: #ccc0b3;
+}
+#gameover2048 {
+  z-index: 1;
+  opacity: 0.5;
+  display: none;
+  width: 350px;
+  height: 340px;
+  background-color: lightgray;
+  position: absolute;
+  top: 26%;
+  left: 50%;
+  font-size: 2.5em;
+}
+@media (max-width: 520px) {
+  #game2048 {
+    width: 310px;
+  }
+  #game2048 > h2 {
+    transform: translateX(-55%);
+  }
+  #returnstep2048{
+    right: 13%;
+  }
+  #game2048items {
+    width: 300px;
+  }
+  #game2048items > div {
+    width: 70px;
+  }
+  #gameover2048 {
+    width: 300px;
+  }
+  #reset2048 {
+    top: 38px;
+    left: 50px;
+  }
+}
